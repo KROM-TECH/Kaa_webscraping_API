@@ -2,6 +2,7 @@ const express = require('express');
 const quest = require('request');
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
+let port = process.env.PORT || 3000
 
 const app = express();
 
@@ -41,7 +42,7 @@ app.get('/download', (request, response) => {
     }).catch(console.error);
 });
 
-app.listen(3000)
+app.listen(port)
 
 //FUNCTIONS
 function getdetails (link) {
