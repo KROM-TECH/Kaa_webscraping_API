@@ -48,7 +48,12 @@ app.listen(port)
 function getdetails (link) {
     return new Promise(async (resolve, reject) => {
         try {
-            const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
+            const browser = await puppeteer.launch({
+                args: [
+                  '--no-sandbox',
+                  '--disable-setuid-sandbox',
+                ],
+              });
             const page = await browser.newPage();
             await page.goto(`https://b-ok.africa${link}`, {waitUntil: 'networkidle2'});
             await page.waitForSelector('.details-book-cover > img',{visible: true})
@@ -79,7 +84,12 @@ function getdetails (link) {
 function DownloadBook (link) {
     return new Promise(async (resolve, reject) => {
         try {
-            const browser = await puppeteer.launch({headless:true});
+            const browser = await puppeteer.launch({
+                args: [
+                  '--no-sandbox',
+                  '--disable-setuid-sandbox',
+                ],
+              });
             const page = await browser.newPage();
             await page.goto(`https://b-ok.africa${link}`, {waitUntil: 'networkidle2'});
             console.log('Clicking on "Download PDF" button');
