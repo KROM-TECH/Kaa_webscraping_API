@@ -60,17 +60,18 @@ function getdetails (link) {
             const page = await browser.newPage();
             await page.goto(`https://b-ok.africa${link}`, {waitUntil: 'networkidle2'});
             await page.waitForSelector('.details-book-cover > img',{visible: true})
+            
             let urls = await page.evaluate(() => {
-                let results = [];
+                let results = {}
                 if(document.querySelector('#bookDescriptionBox')){
                     let text = document.querySelector('#bookDescriptionBox').innerText;
                     let img = document.querySelector('.details-book-cover > img').getAttribute('src')
                     let size = document.querySelector('a.btn.btn-primary.dlButton.addDownloadedBook').innerText;
-                    results.push({description:text, image:img, size:size})
+                     results ={description:text, image:img, size:size}
                 }else{
                     let img = document.querySelector('.details-book-cover > img').getAttribute('src')
                     let size = document.querySelector('a.btn.btn-primary.dlButton.addDownloadedBook').innerText;
-                    results.push({image:img, size:size})
+                    results = {image:img, size:size}
                 }
                 
                
