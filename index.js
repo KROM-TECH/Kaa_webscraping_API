@@ -2,9 +2,12 @@ const express = require('express');
 const quest = require('request');
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
+var cors = require('cors')
 let port = process.env.PORT || 3000
 
 const app = express();
+
+app.use(cors())
 
 //ROUTES
 
