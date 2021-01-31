@@ -41,7 +41,7 @@ app.get('/download', (request, response) => {
     console.log(request.query.link);
     DownloadBook(request.query.link).then((data)=>{
         console.log(data);
-        response.redirect(data) 
+        response.send(data) 
     }).catch(console.error);
 });
 
